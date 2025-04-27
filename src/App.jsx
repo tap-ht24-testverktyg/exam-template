@@ -21,7 +21,7 @@ const App = () => {
 	<div className="app">
 		<header>
 			<div className="hero">
-				<img src="/book-club.png" alt="Bokklubb på café" />
+				<img src="book-club.png" alt="Bokklubb på café" />
 			</div>
 			<h1> Läslistan </h1>
 			<nav>
