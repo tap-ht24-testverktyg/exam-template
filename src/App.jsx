@@ -18,18 +18,30 @@ const App = () => {
 	return (
 	<div className="app">
 		<header>
-			<h1> Läslistan </h1>
-			<nav>
-				<button disabled={page === 'cat'} onClick={() => setPage('cat')}> Katalog </button>
-				<button disabled={page === 'add'} onClick={() => setPage('add')}> Lägg till bok </button>
-				<button disabled={page === 'favs'} onClick={() => setPage('favs')}> Mina böcker </button>
-			</nav>
-		</header>
-		<main>
-			Välkommen!
 			<div className="hero">
 				<img src="/book-club.png" alt="Bokklubb på café" />
 			</div>
+			<h1> Läslistan </h1>
+			<nav>
+				<button
+					data-testid="catalog"
+					disabled={page === 'cat'}
+					onClick={() => setPage('cat')}
+					> Katalog </button>
+				<button
+					data-testid="add-book"
+					disabled={page === 'add'}
+					onClick={() => setPage('add')}
+					> Lägg till bok </button>
+				<button
+					data-testid="favorites"
+					disabled={page === 'favs'}
+					onClick={() => setPage('favs')}
+					> Mina böcker </button>
+			</nav>
+		</header>
+		<main>
+			<h2> Välkommen! </h2>
 
 			{content}
 		</main>
