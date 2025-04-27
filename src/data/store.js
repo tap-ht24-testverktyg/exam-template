@@ -1,11 +1,10 @@
 import { create } from "zustand";
 import { funnyBooks } from "./initial";
-import { listToggle, makeId } from "./utils";
-// import { produce } from "immer";
+import { makeId } from "./utils";
+import { produce } from "immer";
 
-const useBookStore = create(set => ({
-	books: funnyBooks,
-	myList: [],
+const useBookStore = create((set, get) => ({
+	books: funnyBooks.map(b => ({ ...b, fav: false })),
 
 	addBook: (book) => set(state => ({
 		books: [ ...state.books, {
@@ -16,8 +15,14 @@ const useBookStore = create(set => ({
 	})),
 
 	toggleStar: book => set(state => ({
-		myList: listToggle(state.myList, book)
-	}))
+		books: produce(state.books, draft => {
+			draft.forEach(b => {
+				if( b.id === book.id )
+					b.fav = !b.fav
+			})
+		})
+	})),
+	// getStars: () => get().books.filter(b => b.fav).map(b => b.id)
 }))
 
 

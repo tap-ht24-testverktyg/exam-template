@@ -8,12 +8,13 @@ const Catalog = () => {
 		<div className="catalog">
 			{books.map(b => (
 				<div className="book" key={b.id}>
-					"{b.title}", {b.author}
-					<div className="star"
+					<div
 						data-testid={'star-'+b.title}
+						className={'star' + (b.fav ? ' selected' : '')}
 						role="button"
 						onClick={() => toggleStar(b)}
-						>⭐</div>
+						>❤️</div>
+					"{b.title}", {b.author}
 				</div>
 			))}
 		</div>
